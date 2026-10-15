@@ -1,0 +1,9 @@
+.build/
+dist/
+.unlazy/
+.DS_Store
+.env*
+*.xcuserstate
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
