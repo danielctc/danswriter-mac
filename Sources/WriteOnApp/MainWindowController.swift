@@ -200,7 +200,17 @@ final class MainWindowController: NSWindowController, NSWindowDelegate, NSMenuIt
 
     private func buildHeader() {
         let p = palette
-        let mark = UIStyle.label("D", size: 18, color: Ink.teal, weight: .bold, monospaced: true)
+        let mark = NSImageView(frame: .zero)
+        mark.image = Bundle.main.url(forResource: "AppIcon", withExtension: "icns")
+            .flatMap { NSImage(contentsOf: $0) } ?? NSImage(named: "AppIcon")
+        if mark.image == nil {
+            mark.image = NSImage(systemSymbolName: "cloud", accessibilityDescription: "Compare the Cloud")
+        }
+        mark.imageScaling = .scaleProportionallyUpOrDown
+        mark.setAccessibilityLabel("Compare the Cloud")
+        mark.translatesAutoresizingMaskIntoConstraints = false
+        mark.widthAnchor.constraint(equalToConstant: 34).isActive = true
+        mark.heightAnchor.constraint(equalToConstant: 34).isActive = true
         let brand = UIStyle.label("DANSWRITER", size: 11, color: p.muted, weight: .bold)
         let dot = UIStyle.label("·", size: 16, color: p.muted)
         titleLabel.font = .systemFont(ofSize: 13, weight: .medium)
