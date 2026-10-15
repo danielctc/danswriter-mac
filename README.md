@@ -54,3 +54,7 @@ See [PRIVACY.md](PRIVACY.md) for local storage and network behaviour, and [THIRD
 ## Licence
 
 DansWriter is available under the MIT licence. See [LICENSE](LICENSE).
+
+## Signed release builds
+
+For Developer ID distribution, set `DANSWRITER_SIGN_IDENTITY` to an installed signing identity and `DANSWRITER_NOTARY_PROFILE` to an existing notarytool Keychain profile, then run `bash scripts/notarize.sh`. The script signs with the hardened runtime, asks Apple to notarise the app and DMG, staples and validates their tickets, and generates the final checksum. Credentials stay in Keychain and are not included in the app or source.
